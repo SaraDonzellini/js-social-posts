@@ -59,6 +59,7 @@ const posts = [
 const container = document.getElementById('container');
 
 for (let i = 0; i < posts.length; i++) {
+    const date = new Date(posts[i].created).toLocaleDateString()
     container.innerHTML += 
     `
     <div class="post">
@@ -69,7 +70,7 @@ for (let i = 0; i < posts.length; i++) {
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author">${posts[i].author.name}</div>
-                <div class="post-meta__time">${posts[i].created}</div>
+                <div class="post-meta__time">${date}</div>
             </div>
         </div>
     </div>
@@ -120,18 +121,19 @@ for (let i = 0; i < likesButton.length; i++) {
 const profilePic = document.querySelectorAll('.profile-pic')
 
 
+
 for (let i = 0; i < posts.length; i++) {
     
     if (posts[i].author.image == null){
         profilePic[i].classList.add('profile-pic-default')
         profilePic[i].setAttribute("alt", onlyCapitalLetters(posts[i].author.name))
-
-    }
-    
-    
+        const date = new Date(posts[i].created).toLocaleDateString()
+        console.log(date)
+    }   
 }
-
 
 function onlyCapitalLetters (str) {
     return str.replace(/[^A-Z]+/g, "");
 }
+
+
