@@ -96,11 +96,13 @@ for (let i = 0; i < posts.length; i++) {
 
 const likesButton = document.querySelectorAll("a.like-button")
 const likesCounter = document.getElementById('like-counter-1')
+const likesArray = []
+
 
 for (let i = 0; i < likesButton.length; i++) {
     likesButton[i].addEventListener("click", function () {
         likesButton[i].classList.add("like-button--liked")
-        posts[i].likes + 1;
+        likesArray.push(posts[i].id)
+        posts[i].likes += 1 
     })
-    
 }
