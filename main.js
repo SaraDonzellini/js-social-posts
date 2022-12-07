@@ -63,14 +63,14 @@ for (let i = 0; i < posts.length; i++) {
     `
     <div class="post">
     <div class="post__header">
-        <div class="post-meta">                    
+        <div class="post-meta">
             <div class="post-meta__icon">
-                <img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">                    
+                <img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author">${posts[i].author.name}</div>
                 <div class="post-meta__time">${posts[i].created}</div>
-            </div>                    
+            </div>
         </div>
     </div>
     <div class="post__text">${posts[i].content}</div>
@@ -88,8 +88,8 @@ for (let i = 0; i < posts.length; i++) {
             <div class="likes__counter">
                 Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
             </div>
-        </div> 
-    </div>            
+        </div>
+    </div>
     </div>
     `
 };
@@ -97,7 +97,7 @@ for (let i = 0; i < posts.length; i++) {
 const likesButton = document.querySelectorAll("a.like-button");
 const likesCounter = document.querySelectorAll('.likes__counter');
 const likesArray = [];
-let checker = false
+let checker = false;
 
 for (let i = 0; i < likesButton.length; i++) {
     likesButton[i].addEventListener("click", function () {
@@ -106,15 +106,13 @@ for (let i = 0; i < likesButton.length; i++) {
             likesArray.push(posts[i].id);
             posts[i].likes += 1;
             likesCounter[i].innerHTML = `Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone`
-            console.log(posts[i].likes)
-            checker = true
+            checker = true;
         } else {
             likesButton[i].classList.remove("like-button--liked");
             likesArray.pop(posts[i].id);
             posts[i].likes = posts[i].likes - 1;
             likesCounter[i].innerHTML = `Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone`
-            console.log(posts[i].likes)
-            checker = false
+            checker = false;
         }
     })
 }
