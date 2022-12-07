@@ -116,3 +116,13 @@ for (let i = 0; i < likesButton.length; i++) {
         }
     })
 }
+
+const profilePic = document.querySelectorAll('.profile-pic')
+
+for (let i = 0; i < posts.length; i++) {
+    
+    if (posts[i].author.image == null){
+        profilePic[i].classList.add('profile-pic-default')
+    }
+    
+}
