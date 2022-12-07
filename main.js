@@ -97,15 +97,24 @@ for (let i = 0; i < posts.length; i++) {
 const likesButton = document.querySelectorAll("a.like-button");
 const likesCounter = document.querySelectorAll('.likes__counter');
 const likesArray = [];
-
+let checker = false
 
 for (let i = 0; i < likesButton.length; i++) {
     likesButton[i].addEventListener("click", function () {
-
-        likesButton[i].classList.add("like-button--liked");
-        likesArray.push(posts[i].id);
-        posts[i].likes += 1;
-        likesCounter[i].innerHTML = `Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone`
-        console.log(posts[i].likes)
+        if (!checker) {
+            likesButton[i].classList.add("like-button--liked");
+            likesArray.push(posts[i].id);
+            posts[i].likes += 1;
+            likesCounter[i].innerHTML = `Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone`
+            console.log(posts[i].likes)
+            checker = true
+        } else {
+            likesButton[i].classList.remove("like-button--liked");
+            likesArray.pop(posts[i].id);
+            posts[i].likes = posts[i].likes - 1;
+            likesCounter[i].innerHTML = `Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone`
+            console.log(posts[i].likes)
+            checker = false
+        }
     })
 }
