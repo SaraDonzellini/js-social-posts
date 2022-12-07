@@ -56,7 +56,7 @@ const posts = [
     }
 ];
 
-const container = document.getElementById('container')
+const container = document.getElementById('container');
 
 for (let i = 0; i < posts.length; i++) {
     container.innerHTML += 
@@ -92,17 +92,20 @@ for (let i = 0; i < posts.length; i++) {
     </div>            
     </div>
     `
-}
+};
 
-const likesButton = document.querySelectorAll("a.like-button")
-const likesCounter = document.getElementById('like-counter-1')
-const likesArray = []
+const likesButton = document.querySelectorAll("a.like-button");
+const likesCounter = document.querySelectorAll('.likes__counter');
+const likesArray = [];
 
 
 for (let i = 0; i < likesButton.length; i++) {
     likesButton[i].addEventListener("click", function () {
-        likesButton[i].classList.add("like-button--liked")
-        likesArray.push(posts[i].id)
-        posts[i].likes += 1 
+
+        likesButton[i].classList.add("like-button--liked");
+        likesArray.push(posts[i].id);
+        posts[i].likes += 1;
+        likesCounter[i].innerHTML = `Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone`
+        console.log(posts[i].likes)
     })
 }
